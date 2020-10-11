@@ -64,6 +64,7 @@ export default {
     date: {
       type: Object,
       default: () => moment(),
+      required: true,
     },
   },
   data() {
