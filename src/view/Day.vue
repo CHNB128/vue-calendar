@@ -25,7 +25,7 @@ export default {
   props: {
     date: {
       type: Object,
-      default: () => moment(),
+      required: true,
     },
     events: {
       type: Array,
@@ -36,6 +36,10 @@ export default {
     return {
       moment,
     }
+  },
+  watch: {
+    date: () => {},
+    events: () => {},
   },
 }
 </script>
