@@ -1,5 +1,5 @@
 <template>
-  <div class="calendar">
+  <div class="vcal">
     <div>
       <select v-model="viewType" name="view" @change="onViewTypeChange">
         <option value="day">day</option>
@@ -27,10 +27,9 @@
 <script>
 import moment from 'moment'
 
-import './style.scss'
-import DayView from './view/Day'
-import WeekView from './view/Week'
-import MonthView from './view/Month'
+import DayView from './view/Day.vue'
+import WeekView from './view/Week.vue'
+import MonthView from './view/Month.vue'
 
 export default {
   components: {
@@ -107,9 +106,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.calendar {
-  width: 100%;
-}
-</style>

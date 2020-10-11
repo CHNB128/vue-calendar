@@ -3,6 +3,10 @@ $ruller-color: #f00;
 $hours-column-width: 50px;
 $cell-height: 40px;
 
+.vcal {
+  width: 100%;
+}
+
 .vcal__hours {
   min-width: $hours-column-width;
   flex-grow: 0;

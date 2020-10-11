@@ -28,8 +28,8 @@
 <script>
 import moment from 'moment'
 
-import Hours from '../components/Hours'
-import DayTemplate from '../components/DayTemplate'
+import Hours from '../components/Hours.vue'
+import DayTemplate from '../components/DayTemplate.vue'
 
 export default {
   components: {
@@ -54,7 +54,7 @@ export default {
     }
   },
   watch: {
-    date(newValue, oldValue) {
+    date(newValue) {
       this.days = this.updateDays(newValue)
     },
   },

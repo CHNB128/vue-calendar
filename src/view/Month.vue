@@ -62,7 +62,7 @@ export default {
     }
   },
   watch: {
-    date(newValue, oldValue) {
+    date(newValue) {
       this.days = this.updateDays(newValue)
     },
   },

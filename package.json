@@ -2,7 +2,12 @@
   "name": "vue-calendar",
   "version": "1.0.0",
   "description": "Calendar component for Vue",
-  "main": "src/index.js",
+  "main": "dist/vue-calendar.js",
+  "scripts": {
+    "dev": "vue serve --open src/index.dev.vue",
+    "build": "npm run build:css",
+    "build:css": "npx node-sass  --output-style compressed src/style.scss > dist/index.css"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CHNB128/vue-calendar.git"
@@ -21,5 +26,14 @@
   "dependencies": {
     "moment-timezone": "^0.5.31",
     "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "node-sass": "^4.14.1",
+    "rollup": "^2.29.0",
+    "rollup-plugin-vue": "^6.0.0-beta.10",
+    "sass-loader": "^10.0.3"
   }
 }
