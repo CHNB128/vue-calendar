@@ -5,6 +5,7 @@ $cell-height: 40px;
 
 .vcal {
   width: 100%;
+  display: flex;
 }
 
 .vcal__hours {
@@ -23,48 +24,73 @@ $cell-height: 40px;
   }
 }
 
-.vcall__month__days {
+.vcall__month {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  .vcall__month__day {
+  flex-direction: column;
+  .vcal__month__weekdays {
     display: flex;
-    flex-direction: column;
-    width: calc(100% * (1/7));
-    border-color: $line-color;
-    border-width: 0;
-    border-style: solid;
-    border-left-width: 1px;
-    border-top-width: 1px;
-    .vcall__month__day__number {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .vcal__month__weekday {
+      width: calc(100% * (1/7));
+      border-color: $line-color;
+      border-width: 0;
+      border-style: solid;
+      border-left-width: 1px;
       text-align: center;
-      &#current {
-        background-color: blue;
-        color: white;
-      }
     }
-    .vcall__month__day__events {
-      .vcall__month__day__event {
-        padding: 5px;
+  }
+  .vcall__month__days {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    .vcall__month__day, .vcall__month__day--weekday {
+      text-align: center;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      width: calc(100% * (1/8));
+      border-color: $line-color;
+      border-width: 0;
+      border-style: solid;
+      border-left-width: 1px;
+      border-top-width: 1px;
+      .vcall__month__day__number {
         display: flex;
-        width: 100%;
-        overflow: hidden;
-        &:hover {
-          background-color: grey;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        &#current {
+          background-color: #ff7171;
+          color: white;
         }
-        & > *:first-child {
-          margin-right: 5px;
-        }
-        & > *:last-child {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          display: block;
+      }
+      &.vcall__month__day--weekend {
+        background-color: lightgray;
+      }
+      &.vcall__month__day--month-out {
+        background-color: grey;
+      }
+      .vcall__month__day__events {
+        .vcall__month__day__event {
+          padding: 5px;
+          display: flex;
           width: 100%;
-          min-width: 1px;
+          overflow: hidden;
+          &:hover {
+            background-color: grey;
+          }
+          & > *:first-child {
+            margin-right: 5px;
+          }
+          & > *:last-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            width: 100%;
+            min-width: 1px;
+          }
         }
       }
     }
@@ -146,6 +172,7 @@ $cell-height: 40px;
 
 .week-view {
   display: flex;
+  width: 100%;
   flex-direction: column;
   .events-wrapper {
     display: flex;

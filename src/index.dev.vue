@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <div>
       <select v-model="viewType" name="view" @change="onViewTypeChange">
         <option value="day">day</option>
@@ -21,8 +21,11 @@
 <script>
 import moment from 'moment'
 import './style.scss'
+import './style.dev.scss'
 import Calendar from './Calendar.vue'
 import CalendarMixin from './mixin.js'
+
+moment.locale('ru')
 
 export default {
   components: {
@@ -31,9 +34,9 @@ export default {
   mixins: [CalendarMixin],
   data() {
     return {
-      viewType: 'week',
+      viewType: 'month',
       startDate: moment(),
-      endDate: moment().add(1, 'week'),
+      endDate: moment().add(1, 'month'),
     }
   },
   methods: {
@@ -55,7 +58,7 @@ export default {
     },
     today() {
       const { startDate, endDate } = this.getDateRangeForToday({
-        date: this.startDate
+        period: this.viewType
       })
       this.startDate = startDate
       this.endDate = endDate

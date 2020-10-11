@@ -2,12 +2,23 @@
   <div class="vcall__month">
     <div class="vcall__month__info">
       <span>{{ date.format('MMMM') }}</span>
+      {{ ' ' }}
+      <span>{{ date.format('YYYY') }}</span>
+    </div>
+    <div class="vcal__month__weekdays">
+      <div
+        class="vcal__month__weekday"
+        v-for="(day, dayIndex) in days.slice(0, 7)"
+        :key="dayIndex"
+      >
+        {{ day.format('ddd') }}
+      </div>
     </div>
     <div class="vcall__month__days">
       <div
         v-for="(day, dayIndex) in days"
         :key="dayIndex"
-        class="vcall__month__day"
+        :class="dayClass(day)"
       >
         <div
           :id="moment().isSame(day, 'day') ? 'current' : ''"
@@ -42,6 +53,7 @@
 
 <script>
 import moment from 'moment'
+import business from 'moment-business'
 
 export default {
   props: {
@@ -67,10 +79,22 @@ export default {
     },
   },
   methods: {
+    dayClass(date) {
+      const classes = ['vcall__month__day']
+      if (!business.isWeekDay(moment(date))) {
+        classes.push('vcall__month__day--weekend')
+      }
+      if (!moment(this.date).isSame(date, 'month')) {
+        classes.push('vcall__month__day--month-out')
+      }
+      return classes.join(' ')
+    },
     updateDays(date) {
+      const start = moment(date).subtract(date.weekday(), 'day')
+      const end = moment(start).add(5, 'week')
       const days = []
-      for (let i = 0; i < 30; i++) {
-        days.push(moment(date).add(i, 'days'))
+      for (let i = moment(start); i.isBefore(end); i.add(1, 'day')) {
+        days.push(moment(i))
       }
       return days
     },

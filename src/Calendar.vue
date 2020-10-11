@@ -15,6 +15,7 @@
 </template>
 
 <script>
+// TODO: use moment-range https://github.com/rotaready/moment-range#examples
 import moment from 'moment'
 
 import DayView from './view/Day.vue'
