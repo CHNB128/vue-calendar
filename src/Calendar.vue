@@ -51,10 +51,6 @@ export default {
       default: () => moment().add(1, 'week'),
       required: true,
     },
-    onEventClick: {
-      type: Function,
-      default: () => {},
-    },
   },
   watch: {
     startDate: () => {},
@@ -66,6 +62,9 @@ export default {
       return events.filter((event) => {
         return moment(event.startDateDate).isSame(date, 'day')
       })
+    },
+    onEventClick(event) {
+      this.$emit('onEventClick', event)
     },
   },
 }

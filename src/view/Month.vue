@@ -54,10 +54,6 @@ export default {
       default: () => moment(),
       required: true,
     },
-    onEventClick: {
-      type: Function,
-      default: () => {},
-    },
   },
   data() {
     return {
@@ -98,6 +94,9 @@ export default {
       return events.filter((event) => {
         return moment(event.startDate).isSame(date, 'day')
       })
+    },
+    onEventClick(event) {
+      this.$emit('onEventClick', event)
     },
   },
 }

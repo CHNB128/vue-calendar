@@ -14,6 +14,8 @@
       :view-type="viewType"
       :start-date="startDate"
       :end-date="endDate"
+      :events="events"
+      @onEventClick="onEventClick"
     />
   </div>
 </template>
@@ -35,6 +37,16 @@ export default {
   data() {
     return {
       viewType: 'month',
+      events: [
+        {
+          startDate: moment(),
+          endDate: moment().add(1, 'day'),
+          startTime: moment(),
+          endTime: moment().add(1, 'hour'),
+          label: 'Do work',
+          color: '#fafafa',
+        }
+      ],
       startDate: moment(),
       endDate: moment().add(1, 'month'),
     }
@@ -66,6 +78,9 @@ export default {
     onViewTypeChange(event) {
       this.viewType = event.target.value
       this.today()
+    },
+    onEventClick(event) {
+      alert(event.label)
     }
   }
 }
