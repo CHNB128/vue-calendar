@@ -30,7 +30,11 @@
             @click="onEventClick(event)"
             class="vcall__month__day__event"
           >
-            <span>{{ moment(event.startTime, 'hh:mm:ss').format('hh:mm') }}</span>
+            <span>
+              {{ moment(event.startTime, 'hh:mm:ss').format('hh:mm') }}
+              <span>-</span>
+              {{ moment(event.endTime, 'hh:mm:ss').format('hh:mm') }}
+            </span>
             <span>{{ event.label }}</span>
           </div>
         </div>
