@@ -2,6 +2,7 @@ $line-color: #dadce0;
 $ruller-color: #f00;
 $hours-column-width: 50px;
 $cell-height: 40px;
+$today-color: #ff7171;
 
 .vcal {
   width: 100%;
@@ -60,16 +61,21 @@ $cell-height: 40px;
         justify-content: center;
         align-items: center;
         text-align: center;
-        &#current {
-          background-color: #ff7171;
+      }
+      &.vcall__month__day--current {
+        .vcall__month__day__number {
+          background-color: $today-color;
           color: white;
         }
+        border-color: $today-color;
+        border-width: 1px;
+        border-style: solid;
       }
       &.vcall__month__day--weekend {
-        background-color: lightgray;
+        background-color: #d8dadb;
       }
       &.vcall__month__day--month-out {
-        background-color: grey;
+        background-color: #bec0c1;
       }
       .vcall__month__day__events {
         .vcall__month__day__event {
@@ -78,7 +84,7 @@ $cell-height: 40px;
           width: 100%;
           overflow: hidden;
           &:hover {
-            background-color: grey;
+            background-color: #f1f3f4;
           }
           & > *:first-child {
             margin-right: 5px;

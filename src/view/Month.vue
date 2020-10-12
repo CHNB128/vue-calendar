@@ -20,30 +20,18 @@
         :key="dayIndex"
         :class="dayClass(day)"
       >
-        <div
-          :id="moment().isSame(day, 'day') ? 'current' : ''"
-          class="vcall__month__day__number"
-        >
+        <div class="vcall__month__day__number">
           {{ day.format('D') }}
         </div>
         <div class="vcall__month__day__events">
           <div
-            v-for="(event, eventIndex) in getEventsForWeekDay(
-              events,
-              day
-            ).slice(0, 5)"
+            v-for="(event, eventIndex) in getEventsForWeekDay(events, day)"
             :key="eventIndex"
+            @click="onEventClick(event)"
             class="vcall__month__day__event"
           >
-            <div v-if="eventIndex < 4">
-              <span>{{
-                moment(event.startTime, 'hh:mm:ss').format('hh:mm')
-              }}</span>
-              <span>{{ event.label }}</span>
-            </div>
-            <span v-else>
-              more
-            </span>
+            <span>{{ moment(event.startTime, 'hh:mm:ss').format('hh:mm') }}</span>
+            <span>{{ event.label }}</span>
           </div>
         </div>
       </div>
@@ -66,6 +54,10 @@ export default {
       default: () => moment(),
       required: true,
     },
+    onEventClick: {
+      type: Function,
+      default: () => {},
+    },
   },
   data() {
     return {
@@ -87,6 +79,9 @@ export default {
       }
       if (!moment(this.date).isSame(date, 'month')) {
         classes.push('vcall__month__day--month-out')
+      }
+      if (moment().isSame(date, 'day')) {
+        classes.push('vcall__month__day--current')
       }
       return classes.join(' ')
     },

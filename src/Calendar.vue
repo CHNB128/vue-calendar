@@ -10,6 +10,7 @@
       v-else-if="viewType === 'month'"
       :date="startDate"
       :events="events"
+      @onEventClick="onEventClick"
     />
   </div>
 </template>
@@ -49,6 +50,10 @@ export default {
       type: Object,
       default: () => moment().add(1, 'week'),
       required: true,
+    },
+    onEventClick: {
+      type: Function,
+      default: () => {},
     },
   },
   watch: {
