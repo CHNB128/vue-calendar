@@ -44,7 +44,7 @@ $today-color: #ff7171;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    .vcall__month__day, .vcall__month__day--weekday {
+    .vcall__month__day {
       text-align: center;
       display: flex;
       flex-grow: 1;
@@ -54,6 +54,7 @@ $today-color: #ff7171;
       border-width: 0;
       border-style: solid;
       border-left-width: 1px;
+      min-height: 120px;
       border-top-width: 1px;
       .vcall__month__day__number {
         display: flex;
@@ -61,6 +62,10 @@ $today-color: #ff7171;
         justify-content: center;
         align-items: center;
         text-align: center;
+        border-width: 0;
+        border-style: solid;
+        border-color: $line-color;
+        border-bottom-width: 1px;
       }
       &.vcall__month__day--current {
         .vcall__month__day__number {
