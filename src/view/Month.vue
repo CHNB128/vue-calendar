@@ -31,9 +31,9 @@
             class="vcall__month__day__event"
           >
             <span>
-              {{ moment(event.startTime, 'hh:mm:ss').format('hh:mm') }}
+              {{ moment(event.startTime, 'hh:mm').format('hh:mm') }}
               <span>-</span>
-              {{ moment(event.endTime, 'hh:mm:ss').format('hh:mm') }}
+              {{ moment(event.endTime, 'hh:mm').format('hh:mm') }}
             </span>
             <span>{{ event.label }}</span>
           </div>
